@@ -3,6 +3,9 @@ var Stack = function() {
   // but try not not reference your old code in writing the new style.
 };
 
-var stackMethods = {};
+var stackMethods = {
+  //write methods for queue to use
+};
 
-
+//use this and _.extend
+//could make first and last global objects to return using this

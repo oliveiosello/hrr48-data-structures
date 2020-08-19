@@ -5,4 +5,5 @@ var Stack = function() {
 
 var stackMethods = {};
 
-
+//use obj.create
+//could make first and last global objects to return using this

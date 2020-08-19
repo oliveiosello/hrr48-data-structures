@@ -5,4 +5,5 @@ var Queue = function() {
 
 var queueMethods = {};
 
-
+//use obj.create
+//could make first and last global objects to return using this
