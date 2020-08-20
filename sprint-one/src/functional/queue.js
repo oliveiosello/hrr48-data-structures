@@ -3,22 +3,36 @@ var Queue = function() {
 
   // Use an object with numeric keys to store values
   var storage = {};
-  //create variable to track start index and end index
 
+  someInstance.count = 0;
   // Implement the methods below
 
   someInstance.enqueue = function(value) {
-    //add value to obj using numeric keys ex: {"0":"1","1":"2",etc... }
-    //end plus 1
+    storage[someInstance.count] = value;
+    someInstance.count++;
   };
 
   someInstance.dequeue = function() {
-    //remove values from obj starting at first key
-    //start plus 1
+    if (someInstance.count === 0) {
+      return undefined;
+    }
+    //store value at first key in deletedItem
+    let deletedItem = storage[0];
+    for (var i = 0; i < someInstance.count - 2; i++) {
+      storage[i] = storage[i + 1];
+    }
+
+
+    //iterate through keys (numerically) 0 to count -2
+    //set value at current num +1
+
+
+
+    return deletedItem;
   };
 
   someInstance.size = function() {
-    //subtract start from end
+    return someInstance.count;
   };
 
   return someInstance;
