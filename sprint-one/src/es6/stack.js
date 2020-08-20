@@ -21,6 +21,10 @@ class Stack {
     this.count--;
     return deletedItem;
   }
+
+  size() {
+    return this.count;
+  }
   //properties:
   //count
   //storage
