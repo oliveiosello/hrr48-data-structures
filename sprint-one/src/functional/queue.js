@@ -16,17 +16,19 @@ var Queue = function() {
     if (someInstance.count === 0) {
       return undefined;
     }
+
     //store value at first key in deletedItem
     let deletedItem = storage[0];
-    for (var i = 0; i < someInstance.count - 2; i++) {
+    for (var i = 0; i < someInstance.count; i++) {
+      console.log(`${i}: ${storage[i]}, ${storage[i + 1]}`);
       storage[i] = storage[i + 1];
     }
 
+    delete someInstance[someInstance.count - 1];
+    someInstance.count--;
 
     //iterate through keys (numerically) 0 to count -2
     //set value at current num +1
-
-
 
     return deletedItem;
   };
@@ -37,3 +39,4 @@ var Queue = function() {
 
   return someInstance;
 };
+
