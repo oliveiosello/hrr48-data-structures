@@ -21,6 +21,45 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
+  // create result boolean set to false by default
+
+  // declare inner helper method called searchChildren
+  //// parameters - array of children, target
+  //// iterate through array of children
+  //// if index is target, set result to t otherwise do nothing
+  //// if index has children, recurse
+
+  // check if root is value, if it is return true
+  // otherwise check if root has children
+  // if so, run helper method on root's children
+
+  // return result boolean
+
+  let result = false;
+
+  const searchChildren = function(children, target) {
+    for (let i = 0; i < children.length; i++) {
+      let child = children[i];
+      if (child.value === target) {
+        result = true;
+      }
+
+      if (child.children.length > 0) {
+        searchChildren(child.children, target);
+      }
+    }
+    return;
+  };
+
+  if (this.value === target) {
+    result = true;
+  }
+
+  if (this.children.length > 0) {
+    searchChildren(this.children, target);
+  }
+
+  return result;
 };
 
 
