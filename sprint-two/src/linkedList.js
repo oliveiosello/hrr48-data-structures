@@ -26,6 +26,34 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
+    // optimization edge case:
+    // if head is equal to target or tail is equal to target
+    // return true
+    // set a temp variable for the current node
+    // make the head the current node
+    // iterate through list starting at head
+    // if value of current node is equal to target
+    // return true
+    // if the next node is null, we've hit the end of list
+    // break out of the loop
+
+    // return false
+
+    if (list.head === target || list.tail === target) {
+      return true;
+    }
+    let tempNode = list.head;
+    while (true) {
+      if (tempNode.value === target) {
+        return true;
+      }
+      if (tempNode.next === null) {
+        break;
+      } else {
+        tempNode = tempNode.next;
+      }
+    }
+    return false;
   };
 
   return list;
