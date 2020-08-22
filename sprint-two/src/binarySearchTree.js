@@ -38,12 +38,59 @@ bstMethods.insert = function(val) {
 bstMethods.contains = function(val) {
   let result = false;
 
-  var containsHelper = function(node) {
-
+  var containsHelper = function(node, val) {
+    if (node.value === val) {
+      result = true;
+      return;
+    } else if (val < node.value) {
+      if (node.left === null) {
+        return;
+      } else {
+        containsHelper(node.left, val);
+      }
+    } else if (val > node.value) {
+      if (node.right === null) {
+        return;
+      } else {
+        containsHelper(node.right, val);
+      }
+    }
   };
 
+  containsHelper(this, val);
   return result;
 };
+
+bstMethods.depthFirstLog = function(cb) {
+  var dflHelper = function(node, cb) {
+    cb(node.value);
+    if (node.left !== null) {
+      dflHelper(node.left, cb);
+    }
+    if (node.right !== null) {
+      dflHelper(node.right, cb);
+    }
+    return;
+  };
+  dflHelper(this, cb);
+};
+
+// dept first
+// create helper func dflHelper
+//// pass cb and node to dflHelper as params
+// run cb on node's val
+// check to see if node has children
+//// if none, return
+//// if left child
+////// recurse dfl on L child
+//// if right child
+////// recurse dfl on R child
+// run dfl helper with cb and this as params
+
+
+// depth first keeps track of seen nodes? to ensure no doubles?
+//// for every node we check, push value to array of seen values?
+
 
 // insert
 // is value current node
