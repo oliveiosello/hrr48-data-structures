@@ -32,12 +32,13 @@ Graph.prototype.removeNode = function(node) {
   delete this.adjacencyList[node];
 
   for (let adjacencyArray in this.adjacencyList) {
-    adjacencyArray = adjacencyArray.filter(element => element !== node);
+    this.adjacencyList[adjacencyArray] = this.adjacencyList[adjacencyArray].filter(element => element !== node);
   }
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
+  return this.adjacencyList[fromNode].includes(toNode) && this.adjacencyList[toNode].includes(fromNode);
 };
 
 // Connects two nodes in a graph by adding an edge between them.
