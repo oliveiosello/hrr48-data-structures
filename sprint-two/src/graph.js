@@ -42,11 +42,27 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
 
 // Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode, toNode) {
+  if (!this.adjacencyList[fromNode] || !this.adjacencyList[toNode]) {
+    return undefined;
+  }
+  this.adjacencyList[fromNode].push(toNode);
+  this.adjacencyList[toNode].push(fromNode);
 };
+
+// check if both nodes exist
+// if either doesn't exist
+//// return undefined
+// add from node to tonode adj list by pushing to arr
+// same in reverse
 
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
+  this.adjacencyList[fromNode] = this.adjacencyList[fromNode].filter(element => element !== toNode);
+  this.adjacencyList[toNode] = this.adjacencyList[toNode].filter(element => element !== fromNode);
 };
+
+// run filter for fromNode on toNode adj list
+// same in reverse
 
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
