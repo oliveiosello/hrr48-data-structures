@@ -67,6 +67,9 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
+  for (var key in this.adjacencyList) {
+    cb(Number(key));
+  }
 };
 // run cb on all keys
 
@@ -74,4 +77,16 @@ Graph.prototype.forEachNode = function(cb) {
  * Complexity: What is the time complexity of the above functions?
  */
 
-
+// var graph = new Graph();
+// var connectToFive = function(item) {
+//   graph.addEdge(item, 5);
+// };
+// graph.addNode(5);
+// graph.addNode(2);
+// graph.addNode(1);
+// graph.addNode(3);
+// graph.forEachNode(connectToFive);
+// console.log(graph.hasEdge(2, 5));
+// console.log(graph.hasEdge(1, 5));
+// console.log(graph.hasEdge(3, 5));
+// console.log(graph.hasEdge(5, 5));
