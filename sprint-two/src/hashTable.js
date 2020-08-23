@@ -16,7 +16,7 @@ HashTable.prototype.insert = function(k, v) {
   for (let i = 0; i < this._storage[index].length; i++) {
     let currentTuple = this._storage[index][i];
     if (currentTuple[0] = k) {
-      this._storage[index][i][1] = v;
+      currentTuple[1] = v;
     }
   }
 
@@ -38,6 +38,12 @@ HashTable.prototype.retrieve = function(k) {
 
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
+  let tuple = this._storage[index];
+  for (let i = 0; i < tuple.length; i++) {
+    if (tuple[i][0] === k) {
+      this._storage[index] = tuple.filter(arr => arr[0] !== k);
+    }
+  }
 };
 
 
